@@ -50,7 +50,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 
-@TeleOp(name="Iterative OpMode Demo", group="Iterative Opmode A")  // @Autonomous(...) is the other common choice
+@TeleOp(name="Iterative OpMode Template", group="Teleop A-Team")  // @Autonomous(...) is the other common choice
 public class OpMode_IterativeDemo extends OpMode
 {
     /* Declare OpMode members. */
