@@ -66,7 +66,11 @@ public class RegisterOpModes
 
       //A-Team OpModes
         manager.register("OpMode_IterativeDemo",    OpMode_IterativeDemo.class);
-        manager.register("VuforiaNav",              VuforiaNav.class);
+        manager.register("VuMarkIdentification",    VuMarkIdentification.class);
+        manager.register("BillsTeleOp",             BillsTeleOp.class);
+
+      //B-Team OpModes
+
 
       //B-Team OpModes
 
