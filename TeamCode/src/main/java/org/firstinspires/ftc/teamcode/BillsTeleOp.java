@@ -64,8 +64,8 @@ public class BillsTeleOp extends OpMode {
 
         float leftY = -gamepad1.left_stick_y;
         float leftX = gamepad1.left_stick_x;
-        float rightX = gamepad1.right_stick_x;
-        float rightY = -gamepad1.right_stick_y;
+//      float rightX = gamepad1.right_stick_x;
+//      float rightY = -gamepad1.right_stick_y;
 
         double x = gamepad1.right_stick_x;
         double y = gamepad1.right_stick_y;
