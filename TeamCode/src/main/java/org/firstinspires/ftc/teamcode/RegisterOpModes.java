@@ -1,8 +1,3 @@
-/* --------------------------------------------------------------------------------
- * *** WARNING  ****    *** WARNING  ****    *** WARNING  ****    *** WARNING  ****
- * This code is only designed to be used in the Android Studio code Environment.
- * It will not build if it is imported as a sample into the OnBot Java environment.
- * -------------------------------------------------------------------------------*/
 
 /* Copyright (c) 2017 FIRST. All rights reserved.
  *
@@ -69,8 +64,12 @@ public class RegisterOpModes
       // Un-comment any line to enable that sample.
       // Or add your own lines to register your Team opmodes.
 
-      //B-Team OpModes
+      //A-Team OpModes
         manager.register("OpMode_IterativeDemo",    OpMode_IterativeDemo.class);
+        manager.register("VuforiaNav",              VuforiaNav.class);
+
+      //B-Team OpModes
+
 
       // Basic Templates
       // manager.register("Iterative Opmode",       BasicOpMode_Iterative.class);
