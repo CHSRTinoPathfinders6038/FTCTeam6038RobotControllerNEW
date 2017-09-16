@@ -31,7 +31,17 @@ package org.firstinspires.ftc.teamcode;
 
 /**
  * Created by billx on 9/14/17.
- * This OpMode
+ * This OpMode provides an excellent demonstration to illustrate the means to which
+ * a typical TeleOp may be programmed for a bare-bone, four-wheel starter robot will run.
+ * It is complete with the following abilities as of at the time of writing:
+ *
+ * 1) Use buttons on the gamepad to switch the mode of drive (e.g. Arcade, Tank).
+ * 2) Adjust the max speed of the motors.
+ * 3) Includes a telemetry of instructions for the driver.
+ *
+ * The code is structured as an IterativeOpMode.
+ *
+ *{@link org.firstinspires.ftc.robotcontroller.external.samples.BasicOpMode_Iterative}
  */
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -40,7 +50,20 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+
+/**The below @TeleOp annotation specifies that the name of the OpMode shall be known as "TeleOpv1.0"
+ * and that the group to which it belongs which be "Team-A". In the case that you create a
+ * driver-controlled OpMode, you shall include the following annotation, complete with the
+ * appropriate name for the OpMode, as well as specifying the group to be of "Team-B".
+ * Additionally, to complete an official registration of an OpMode in general through the system,
+ * there is a registering Java class apt to account that for that matter.
+ *
+ * @see RegisterOpModes
+ *
+ */
+
 @TeleOp(name = "TeleOpv1.0", group = "Team-A")
+
 public class BillsTeleOp extends OpMode {
     private DcMotor leftMotor;
     private DcMotor rightMotor;
@@ -52,6 +75,8 @@ public class BillsTeleOp extends OpMode {
         driveMode = 1;
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
+
+
 //      rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         maxSpeed = 1;
 
