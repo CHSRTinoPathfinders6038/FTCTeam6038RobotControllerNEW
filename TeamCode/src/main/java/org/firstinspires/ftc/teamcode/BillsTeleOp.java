@@ -37,8 +37,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "TeleOpv1.0", group = "Team-A")
 public class BillsTeleOp extends OpMode {
@@ -51,7 +49,7 @@ public class BillsTeleOp extends OpMode {
 
         driveMode = 1;
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
-        rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        rightMotor = hardwareMap.dcMotor.get("rightmotor");
 //      rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         maxSpeed = 1;
 
