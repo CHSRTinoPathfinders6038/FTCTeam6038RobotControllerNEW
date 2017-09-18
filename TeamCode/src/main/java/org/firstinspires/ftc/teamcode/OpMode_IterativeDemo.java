@@ -55,14 +55,17 @@ public class OpMode_IterativeDemo extends OpMode
 {
     /* Declare OpMode members. */
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftMotor = null;
-    private DcMotor rightMotor = null;
+    private DcMotor leftMotor ;
+    private DcMotor rightMotor ;
 
     /*
      * Code to run ONCE when the driver hits INIT
      */
     @Override
     public void init() {
+        leftMotor = hardwareMap.dcMotor.get("LeftMotor");
+        rightMotor = hardwareMap.dcMotor.get("RightMotor");
+
         telemetry.addData("Status", "Initialized");
 
 
@@ -88,7 +91,8 @@ public class OpMode_IterativeDemo extends OpMode
     @Override
     public void loop() {
         telemetry.addData("Status", "Running: " + runtime.toString());
-
+        float leftY = gamepad1.left_stick_y;
+        float leftx = gamepad1.left_stick_x;
         // note: The joystick goes negative when pushed forwards TEST)
         leftMotor.setPower(-gamepad1.left_stick_y);
         rightMotor.setPower(-gamepad1.right_stick_y);
