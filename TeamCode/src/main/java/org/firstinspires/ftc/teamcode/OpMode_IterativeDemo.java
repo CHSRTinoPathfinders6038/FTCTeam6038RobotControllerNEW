@@ -52,35 +52,29 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="Iterative OpMode Template", group="Teleop A-Team")  // @Autonomous(...) is the other common choice
 public class OpMode_IterativeDemo extends OpMode
+    public int driveMode;
+public double maxSpeed;
+
+
 {
     /* Declare OpMode members. */
-    private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftMotor ;
-    private DcMotor rightMotor ;
 
     /*
      * Code to run ONCE when the driver hits INIT
      */
     @Override
     public void init() {
-        leftMotor = hardwareMap.dcMotor.get("LeftMotor");
-        rightMotor = hardwareMap.dcMotor.get("RightMotor");
+        public int driveMode;
+        driveMode=0;
+        maxSpeed=0.5;
+//two motors  left and right varable drivemode  and max speed gamepad 1-2 pamepad 2-3  max starts at 0.5   if dpad
+        //in init initialize max speed
+               // gamepad
+               // gampepad 1--decrase by 0.01
+               // gamepad b-increases by 0.07
+                //optional: dpad.down-decreases drive mode to 2 and increases speed to 0.095
+                //hihihihi
 
-        telemetry.addData("Status", "Initialized");
-
-
-        /* eg: Initialize the hardware variables. Note that the strings used here as parameters
-         * to 'get' must correspond to the names assigned during the robot configuration
-         * step (using the FTC Robot Controller app on the phone).
-         */
-         leftMotor  = hardwareMap.dcMotor.get("left_drive");
-         rightMotor = hardwareMap.dcMotor.get("right_drive");
-
-        // eg: Set the drive motor directions:
-        // Reverse the motor that runs backwards when connected directly to the battery
-        // leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        //  rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-        // telemetry.addData("Status", "Initialized");
     }
 
     /*
@@ -90,12 +84,15 @@ public class OpMode_IterativeDemo extends OpMode
 
     @Override
     public void loop() {
-        telemetry.addData("Status", "Running: " + runtime.toString());
-        float leftY = gamepad1.left_stick_y;
-        float leftx = gamepad1.left_stick_x;
-        // note: The joystick goes negative when pushed forwards TEST)
-        leftMotor.setPower(-gamepad1.left_stick_y);
-        rightMotor.setPower(-gamepad1.right_stick_y);
+        if (gamepad1.a)
+            driveMode = 2
+        telemetry.addData("driveMode", 2);
+
+        if (gamepad1.b)
+            driveMode = 3
+
+
+
     }
 
     /*
