@@ -54,33 +54,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class OpMode_IterativeDemo extends OpMode
 {
     /* Declare OpMode members. */
-    private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftMotor ;
-    private DcMotor rightMotor ;
 
     /*
      * Code to run ONCE when the driver hits INIT
      */
     @Override
     public void init() {
-        leftMotor = hardwareMap.dcMotor.get("LeftMotor");
-        rightMotor = hardwareMap.dcMotor.get("RightMotor");
 
-        telemetry.addData("Status", "Initialized");
-
-
-        /* eg: Initialize the hardware variables. Note that the strings used here as parameters
-         * to 'get' must correspond to the names assigned during the robot configuration
-         * step (using the FTC Robot Controller app on the phone).
-         */
-         leftMotor  = hardwareMap.dcMotor.get("left_drive");
-         rightMotor = hardwareMap.dcMotor.get("right_drive");
-
-        // eg: Set the drive motor directions:
-        // Reverse the motor that runs backwards when connected directly to the battery
-        // leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        //  rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-        // telemetry.addData("Status", "Initialized");
     }
 
     /*
@@ -90,12 +70,7 @@ public class OpMode_IterativeDemo extends OpMode
 
     @Override
     public void loop() {
-        telemetry.addData("Status", "Running: " + runtime.toString());
-        float leftY = gamepad1.left_stick_y;
-        float leftx = gamepad1.left_stick_x;
-        // note: The joystick goes negative when pushed forwards TEST)
-        leftMotor.setPower(-gamepad1.left_stick_y);
-        rightMotor.setPower(-gamepad1.right_stick_y);
+
     }
 
     /*
