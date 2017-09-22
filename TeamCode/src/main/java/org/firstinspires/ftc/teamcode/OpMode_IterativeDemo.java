@@ -51,47 +51,59 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @TeleOp(name="Iterative OpMode Template", group="Teleop A-Team")  // @Autonomous(...) is the other common choice
-public class OpMode_IterativeDemo extends OpMode
-{
+public class OpMode_IterativeDemo extends OpMode{
+    public int driveMode;
+public double maxSpeed;
+
+
+
+
     /* Declare OpMode members. */
-    private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftMotor = null;
-    private DcMotor rightMotor = null;
 
     /*
      * Code to run ONCE when the driver hits INIT
      */
-    @Override
+
     public void init() {
-        telemetry.addData("Status", "Initialized");
 
+        driveMode=0;
+        maxSpeed=0.5;
+ //gamepad 1-2 gamepad 2-3  max starts at 0.5
+        //in init initialize max speed
+               // gampepad 1--decrase by 0.01
+               // gamepad b-increases by 0.07
+                //optional: dpad.down-decreases drive mode to 2 and increases speed to 0.095
 
-        /* eg: Initialize the hardware variables. Note that the strings used here as parameters
-         * to 'get' must correspond to the names assigned during the robot configuration
-         * step (using the FTC Robot Controller app on the phone).
-         */
-         leftMotor  = hardwareMap.dcMotor.get("left_drive");
-         rightMotor = hardwareMap.dcMotor.get("right_drive");
-
-        // eg: Set the drive motor directions:
-        // Reverse the motor that runs backwards when connected directly to the battery
-        // leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        //  rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-        // telemetry.addData("Status", "Initialized");
     }
 
     /*
-     * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
+     * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAy
      */
 
 
     @Override
     public void loop() {
-        telemetry.addData("Status", "Running: " + runtime.toString());
+        if (gamepad1.a){
+        driveMode=2;
+            maxSpeed -= 0.03;
+        }
+        if (gamepad1.b){
+        driveMode=2;
+            maxSpeed += 0.01;
+        }
 
-        // note: The joystick goes negative when pushed forwards TEST)
-        leftMotor.setPower(-gamepad1.left_stick_y);
-        rightMotor.setPower(-gamepad1.right_stick_y);
+        if (maxSpeed>0.5){
+        maxSpeed=maxSpeed-0.01;
+        }
+
+
+
+
+
+
+        // gampepad 1--decrase by 0.01
+        // gamepad b-increases by 0.07
+
     }
 
     /*

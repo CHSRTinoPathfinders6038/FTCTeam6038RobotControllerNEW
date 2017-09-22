@@ -68,6 +68,9 @@ public class BillsTeleOp extends OpMode {
         double x = gamepad1.right_stick_x;
         double y = gamepad1.right_stick_y;
 
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightMotor.setDirection(DcMotor.Direction.FORWARD);
+
         if (gamepad1.a) {
             telemetry.addData("Drive Mode", "Tank Drive Test");
             driveMode = 3;
