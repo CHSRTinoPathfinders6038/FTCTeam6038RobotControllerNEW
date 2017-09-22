@@ -67,13 +67,11 @@ public double maxSpeed;
         public int driveMode;
         driveMode=0;
         maxSpeed=0.5;
-//two motors  left and right varable drivemode  and max speed gamepad 1-2 pamepad 2-3  max starts at 0.5   if dpad
+ gamepad 1-2 gamepad 2-3  max starts at 0.5
         //in init initialize max speed
-               // gamepad
                // gampepad 1--decrase by 0.01
                // gamepad b-increases by 0.07
                 //optional: dpad.down-decreases drive mode to 2 and increases speed to 0.095
-                //hihihihi
 
     }
 
@@ -84,7 +82,28 @@ public double maxSpeed;
 
     @Override
     public void loop() {
-        if
+        if (gamepad1.a){
+        driveMode=2;
+        }
+        if (gamepad1.b){
+        driveMode=2;
+        }
+        if (gamepad2.a){
+        maxSpeed=3;
+        }
+        if (gamepad2.b){
+        maxSpeed=3;
+        }
+        if (maxSpeed>0.5){
+        maxSpeed=maxSpeed-0.01;
+        }
+
+
+
+
+
+        // gampepad 1--decrase by 0.01
+        // gamepad b-increases by 0.07
 
     }
 
