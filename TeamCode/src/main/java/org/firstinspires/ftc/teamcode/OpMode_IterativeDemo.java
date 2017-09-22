@@ -60,6 +60,12 @@ public class OpMode_IterativeDemo extends OpMode
      */
     @Override
     public void init() {
+//two motors  left and right varable drivemode  and max speed gamepad 1-2 pamepad 2-3  max starts at 0.5   if dpad
+        in init initialize max speed
+                gamepad
+                gampepad 1--decrase by 0.01
+                gamepad b-increases by 0.07
+                optional: dpad.down-decreases drive mode to 2 and increases speed to 0.095
 
     }
 
