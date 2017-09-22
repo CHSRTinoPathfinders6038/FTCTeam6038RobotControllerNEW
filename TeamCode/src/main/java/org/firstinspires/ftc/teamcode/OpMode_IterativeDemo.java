@@ -85,16 +85,13 @@ public double maxSpeed;
     public void loop() {
         if (gamepad1.a){
         driveMode=2;
+            maxSpeed -= 0.03;
         }
         if (gamepad1.b){
         driveMode=2;
+            maxSpeed += 0.01;
         }
-        if (gamepad2.a){
-        maxSpeed=3;
-        }
-        if (gamepad2.b){
-        maxSpeed=3;
-        }
+
         if (maxSpeed>0.5){
         maxSpeed=maxSpeed-0.01;
         }
