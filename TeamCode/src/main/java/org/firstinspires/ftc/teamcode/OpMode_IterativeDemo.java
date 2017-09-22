@@ -109,6 +109,7 @@ public double maxSpeed;
             velocity += 0.01;
             if (velocity > maxSpeed) {
                 velocity = maxSpeed;
+                h
             }
         }
 
