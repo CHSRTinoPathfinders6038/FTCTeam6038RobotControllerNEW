@@ -51,47 +51,58 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @TeleOp(name="Iterative OpMode Template", group="Teleop A-Team")  // @Autonomous(...) is the other common choice
-public class OpMode_IterativeDemo extends OpMode
+public class OpMode_IterativeDemo extends OpMode{
     public int driveMode;
 public double maxSpeed;
 
 
-{
+
+
     /* Declare OpMode members. */
 
     /*
      * Code to run ONCE when the driver hits INIT
      */
-    @Override
+
     public void init() {
-        public int driveMode;
+
         driveMode=0;
         maxSpeed=0.5;
-//two motors  left and right varable drivemode  and max speed gamepad 1-2 pamepad 2-3  max starts at 0.5   if dpad
+ //gamepad 1-2 gamepad 2-3  max starts at 0.5
         //in init initialize max speed
-               // gamepad
                // gampepad 1--decrase by 0.01
                // gamepad b-increases by 0.07
                 //optional: dpad.down-decreases drive mode to 2 and increases speed to 0.095
-                //hihihihi
 
     }
 
     /*
-     * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
+     * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAy
      */
 
 
     @Override
     public void loop() {
-        if (gamepad1.a)
-            driveMode = 2
-        telemetry.addData("driveMode", 2);
+        if (gamepad1.a){
+        driveMode=2;
+            maxSpeed -= 0.03;
+        }
+        if (gamepad1.b){
+        driveMode=2;
+            maxSpeed += 0.01;
+        }
 
-        if (gamepad1.b)
-            driveMode = 3
+        if (maxSpeed>0.5){
+        maxSpeed=maxSpeed-0.01;
+        }
 
 
+
+
+
+
+        // gampepad 1--decrase by 0.01
+        // gamepad b-increases by 0.07
 
     }
 

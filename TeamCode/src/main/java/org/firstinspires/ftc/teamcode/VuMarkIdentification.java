@@ -181,3 +181,5 @@ public class VuMarkIdentification extends LinearOpMode {
         return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
     }
 }
+
+/* gampad 1 a change cange speed by -0.01 if below zero change too zero
