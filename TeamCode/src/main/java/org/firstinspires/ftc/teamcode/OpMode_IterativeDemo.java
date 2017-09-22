@@ -84,7 +84,14 @@ public double maxSpeed;
 
     @Override
     public void loop() {
-        if
+        if (gamepad1.a)
+            driveMode = 2
+        telemetry.addData("driveMode", 2);
+
+        if (gamepad1.b)
+            driveMode = 3
+
+
 
     }
 
