@@ -54,6 +54,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class OpMode_IterativeDemo extends OpMode{
     public int driveMode;
 public double maxSpeed;
+    public double velocity;
 
 
 
@@ -66,8 +67,9 @@ public double maxSpeed;
 
     public void init() {
 
-        driveMode=0;
-        maxSpeed=0.5;
+        driveMode = 0;
+        maxSpeed = 0.5;
+        velocity =  0.0;
  //gamepad 1-2 gamepad 2-3  max starts at 0.5
         //in init initialize max speed
                // gampepad 1--decrase by 0.01
@@ -84,17 +86,36 @@ public double maxSpeed;
     @Override
     public void loop() {
         if (gamepad1.a){
-        driveMode=2;
-            maxSpeed -= 0.03;
+        driveMode = 3;
+            maxSpeed = 0.5;
         }
         if (gamepad1.b){
-        driveMode=2;
-            maxSpeed += 0.01;
+        driveMode = 2;
+            maxSpeed = 0.5;
         }
 
         if (maxSpeed>0.5){
         maxSpeed=maxSpeed-0.01;
         }
+
+        if (driveMode == 3){
+            velocity += 0.03;
+            if (velocity > maxSpeed) {
+                velocity = maxSpeed;
+            }
+        }
+
+        if (driveMode == 2){
+            velocity += 0.01;
+            if (velocity > maxSpeed) {
+                velocity = maxSpeed;
+            }
+        }
+
+
+
+
+                    }
 
 
 
