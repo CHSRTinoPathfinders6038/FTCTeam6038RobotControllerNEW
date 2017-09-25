@@ -109,7 +109,7 @@ public double maxSpeed;
             velocity += 0.01;
             if (velocity > maxSpeed) {
                 velocity = maxSpeed;
-                h
+
             }
         }
 
@@ -126,7 +126,7 @@ public double maxSpeed;
         // gampepad 1--decrase by 0.01
         // gamepad b-increases by 0.07
 
-    }
+
 
     /*
      * Code to run ONCE after the driver hits STOP
