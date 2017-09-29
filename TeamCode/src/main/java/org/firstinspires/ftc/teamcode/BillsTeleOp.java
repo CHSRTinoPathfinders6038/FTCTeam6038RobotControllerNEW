@@ -113,27 +113,27 @@ public class BillsTeleOp extends OpMode {
         }
         if (gamepad1.y) { //If y button is pressed it sets driveMode to arcade backward
             driveMode = 2; // sets driveMode to arcade backwards(2)
-            telemetry.addData("Drive Mode", "Arcade Backward"); // dysplayes on phone "Arcade Backwards"
+            telemetry.addData("Drive Mode", "Arcade Backward"); // displayes on phone "Arcade Backwards"
             telemetry.update();
         }
 
         if (driveMode == 1) {
-            leftMotor.setPower((leftY + leftX) * maxSpeed);
-            rightMotor.setPower((leftY - leftX) * maxSpeed);
+            leftMotor.setPower((leftY + leftX) * maxSpeed);   //if driveMode is equal to 1 set the power of leftMotor to thing
+            rightMotor.setPower((leftY - leftX) * maxSpeed);  //set power of rightMotor to thing
         }
 
         if (driveMode == 3) {
-            leftMotor.setPower(y * maxSpeed);
-            rightMotor.setPower(y * maxSpeed);
+            leftMotor.setPower(y * maxSpeed);  //if drivemode is equal to 3 set power of leftMotor to thing
+            rightMotor.setPower(y * maxSpeed);    //set power of rightmotor to thing
         }
 
 
         if (driveMode == 2) {
-            leftMotor.setPower(-1 * (leftY + leftX) * maxSpeed);
-            rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);
+            leftMotor.setPower(-1 * (leftY + leftX) * maxSpeed);     //if drivemode is equal to 2 set power of leftmotor to thing
+            rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);        //set power of rightmotor to thing
         }
         if (driveMode == 4) {
-            double scaledRight = scaleInput((y - x) / Math.sqrt(2.0));
+            double scaledRight = scaleInput((y - x) / Math.sqrt(2.0)); //if drivemode is equal to 4
             double scaledLeft = scaleInput((y + x) / Math.sqrt(2.0));
 
             leftMotor.setPower(scaledLeft / 2);
