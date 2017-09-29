@@ -87,12 +87,12 @@ public class BillsTeleOp extends OpMode {
     public void loop() {
 
 
-        float leftY = -gamepad1.left_stick_y;
-        float leftX = gamepad1.left_stick_x;
+        float leftY = -gamepad1.left_stick_y; //sets leftY to the negative y position of the left stick
+        float leftX = gamepad1.left_stick_x;   //sets leftX to the x position of the left stick
 
 
-        double x = gamepad1.right_stick_x;
-        double y = gamepad1.right_stick_y;
+        double x = gamepad1.right_stick_x; //assigns the position of the right stick x to the variable x
+        double y = gamepad1.right_stick_y;   //assigns the position of the right stick y to the variable y
 
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
         rightMotor.setDirection(DcMotor.Direction.FORWARD);
