@@ -129,11 +129,11 @@ public class BillsTeleOp extends OpMode {
 
 
         if (driveMode == 2) {
-            leftMotor.setPower(-1 * (leftY + leftX) * maxSpeed);     //if drivemode is equal to 2 set power of leftmotor to thing
-            rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);        //set power of rightmotor to thing
+            leftMotor.setPower(-1 * (leftY + leftX) * maxSpeed);     //if drivemode is equal to 2 set power of leftmotor to -(leftY+leftX) times the max speed
+            rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);        //set power of rightmotor to - (leftY-leftX) times the max speed
         }
         if (driveMode == 4) {
-            double scaledRight = scaleInput((y - x) / Math.sqrt(2.0)); //if drivemode is equal to 4
+            double scaledRight = scaleInput((y - x) / Math.sqrt(2.0));
             double scaledLeft = scaleInput((y + x) / Math.sqrt(2.0));
 
             leftMotor.setPower(scaledLeft / 2);
