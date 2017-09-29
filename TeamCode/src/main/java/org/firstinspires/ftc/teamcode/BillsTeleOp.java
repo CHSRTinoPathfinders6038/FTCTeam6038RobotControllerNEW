@@ -97,23 +97,23 @@ public class BillsTeleOp extends OpMode {
         leftMotor.setDirection(DcMotor.Direction.REVERSE);  //sets the direction of the leftMotor to reverse so that the robot can move forward
         rightMotor.setDirection(DcMotor.Direction.FORWARD);    //sets the direction of the rightMotor to forward so that the robot can move fora
 
-        if (gamepad1.a) {
+        if (gamepad1.a) { //If the a button is pressed it sets the driveMode to tank
             telemetry.addData("Drive Mode", "Tank Drive Test");  //displays on phone "Tank Drive Test"
             driveMode = 3;  //sets driveMode to tank(3)
         }
-        if (gamepad1.b) {
+        if (gamepad1.b) { //If the b button is pressed it sets the driveMode to Bills arcade allrounder
             driveMode = 4;  //sets driveMode to Arcade(4)
             telemetry.addData("Drive Mode", "Bills Premier Arcade AllRounder");  //displays on phone "Bills Premier Arcade AllRounder"
             telemetry.update();
         }
 
-        if (gamepad1.x) {
-            telemetry.addData("Drive Mode", "Arcade Forward");
-            driveMode = 1;
+        if (gamepad1.x) { //If x button is pressed it sets the driveMode to Arcade forwards
+            telemetry.addData("Drive Mode", "Arcade Forward"); // Displays on phone "Arcade Forward"
+            driveMode = 1; // sets driveMode to Arcade Forward(1)
         }
-        if (gamepad1.y) {
-            driveMode = 2;
-            telemetry.addData("Drive Mode", "Arcade Backward");
+        if (gamepad1.y) { //If y button is pressed it sets driveMode to arcade backwards
+            driveMode = 2; // sets driveMode to arcade backwards(2)
+            telemetry.addData("Drive Mode", "Arcade Backward"); // dysplayes on phone "Arcade Backwards"
             telemetry.update();
         }
 
