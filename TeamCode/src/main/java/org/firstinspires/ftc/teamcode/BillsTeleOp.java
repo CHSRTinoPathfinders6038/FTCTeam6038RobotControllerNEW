@@ -65,10 +65,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name = "TeleOpv1.0", group = "Team-A")
 
 public class BillsTeleOp extends OpMode {
-    private DcMotor leftMotor;
-    private DcMotor rightMotor;
-    private int driveMode;
-    private double maxSpeed;
+    private DcMotor leftMotor; //initializes the left dc motor as DcMotor
+    private DcMotor rightMotor;//initializes the right dc motor  as DcMotor
+    private int driveMode;   //initializes the drivemode as integer
+    private double maxSpeed;  //initializes the maxSpeed as a double
 
     public void init() {
 
@@ -180,6 +180,7 @@ public class BillsTeleOp extends OpMode {
         if (index > 16) {
             index = 16;
         }
+
 
         // get value from the array.
         double dScale = 0.0;
