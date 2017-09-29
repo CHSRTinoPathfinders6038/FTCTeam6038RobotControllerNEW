@@ -137,8 +137,8 @@ public class BillsTeleOp extends OpMode {
             double scaledRight = scaleInput((y - x) / Math.sqrt(2.0));
             double scaledLeft = scaleInput((y + x) / Math.sqrt(2.0));
 
-            leftMotor.setPower((scaledLeft / 2) * maxSpeed);
-            rightMotor.setPower((scaledRight / 2) * maxSpeed);
+            leftMotor.setPower(scaledLeft / 2);
+            rightMotor.setPower(scaledRight / 2);
         }
 
         if (gamepad1.dpad_down) {

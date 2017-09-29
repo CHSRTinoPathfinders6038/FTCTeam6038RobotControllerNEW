@@ -90,10 +90,10 @@ public double maxSpeed;
             maxSpeed = 0.5;
         }
         if (gamepad1.b){
-        driveMode = 2;
-            maxSpeed = 0.5;
+        driveMode = 3;
+            maxSpeed = 0.01;
         }
-
+telemetry.addData("DriverMode", "Bill is a god");
         if (maxSpeed>0.5){
         maxSpeed=maxSpeed-0.01;
         }
