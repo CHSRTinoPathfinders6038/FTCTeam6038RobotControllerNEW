@@ -111,7 +111,7 @@ public class BillsTeleOp extends OpMode {
             telemetry.addData("Drive Mode", "Arcade Forward"); // Displays on phone "Arcade Forward"
             driveMode = 1; // sets driveMode to Arcade Forward(1)
         }
-        if (gamepad1.y) { //If y button is pressed it sets driveMode to arcade backwards
+        if (gamepad1.y) { //If y button is pressed it sets driveMode to arcade backward
             driveMode = 2; // sets driveMode to arcade backwards(2)
             telemetry.addData("Drive Mode", "Arcade Backward"); // dysplayes on phone "Arcade Backwards"
             telemetry.update();
