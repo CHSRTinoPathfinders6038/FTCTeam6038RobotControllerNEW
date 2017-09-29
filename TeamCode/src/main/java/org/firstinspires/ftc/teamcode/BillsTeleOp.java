@@ -66,19 +66,19 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class BillsTeleOp extends OpMode {
     private DcMotor leftMotor; //initializes the left dc motor as DcMotor
-    private DcMotor rightMotor;//initializes the right dc motor  as DcMotor
+    private DcMotor rightMotor; //initializes the right dc motor  as DcMotor
     private int driveMode;   //initializes the drivemode as integer
     private double maxSpeed;  //initializes the maxSpeed as a double
 
     public void init() {
 
-        driveMode = 1;
-        leftMotor = hardwareMap.dcMotor.get("leftMotor");
-        rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        driveMode = 1; //Sets driveMode to 1
+        leftMotor = hardwareMap.dcMotor.get("leftMotor"); //assigns the variable leftMotor to the left motor in the hardware map
+        rightMotor = hardwareMap.dcMotor.get("rightMotor"); //assigns the variable rightMotor to the right motor in the hardware map
 
 
 
-        maxSpeed = 1;
+        maxSpeed = 1; // sets max speed to 1
 
 
 
