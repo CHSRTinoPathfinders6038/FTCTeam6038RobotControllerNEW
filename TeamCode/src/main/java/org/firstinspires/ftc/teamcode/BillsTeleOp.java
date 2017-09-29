@@ -77,10 +77,10 @@ public class BillsTeleOp extends OpMode {
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
 
 
-//      rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
         maxSpeed = 1;
 
-//      buttonPress.setPosition(0.25);
+
 
     }
 
@@ -89,8 +89,7 @@ public class BillsTeleOp extends OpMode {
 
         float leftY = -gamepad1.left_stick_y;
         float leftX = gamepad1.left_stick_x;
-//      float rightX = gamepad1.right_stick_x;
-//      float rightY = -gamepad1.right_stick_y;
+
 
         double x = gamepad1.right_stick_x;
         double y = gamepad1.right_stick_y;
@@ -117,7 +116,6 @@ public class BillsTeleOp extends OpMode {
             telemetry.update();
         }
 
-//      For test purposes only - may remove in the future
         if (driveMode == 1) {
             leftMotor.setPower((leftY + leftX) * maxSpeed);
             rightMotor.setPower((leftY - leftX) * maxSpeed);
@@ -128,7 +126,7 @@ public class BillsTeleOp extends OpMode {
             rightMotor.setPower(y * maxSpeed);
         }
 
-//      For test purposes only - may remove in the future
+
         if (driveMode == 2) {
             leftMotor.setPower(-1 * (leftY + leftX) * maxSpeed);
             rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);
