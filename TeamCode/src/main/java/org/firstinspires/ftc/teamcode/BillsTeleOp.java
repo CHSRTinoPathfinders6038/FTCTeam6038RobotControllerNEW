@@ -94,18 +94,19 @@ public class BillsTeleOp extends OpMode {
         double x = gamepad1.right_stick_x; //assigns the position of the right stick x to the variable x
         double y = gamepad1.right_stick_y;   //assigns the position of the right stick y to the variable y
 
-        leftMotor.setDirection(DcMotor.Direction.REVERSE);
-        rightMotor.setDirection(DcMotor.Direction.FORWARD);
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);  //sets the direction of the leftMotor to reverse so that the robot can move forward
+        rightMotor.setDirection(DcMotor.Direction.FORWARD);    //sets the direction of the rightMotor to forward so that the robot can move fora
 
         if (gamepad1.a) {
-            telemetry.addData("Drive Mode", "Tank Drive Test");
-            driveMode = 3;
+            telemetry.addData("Drive Mode", "Tank Drive Test");  //displays on phone "Tank Drive Test"
+            driveMode = 3;  //sets driveMode to tank(3)
         }
         if (gamepad1.b) {
-            driveMode = 4;
-            telemetry.addData("Drive Mode", "Bills Premier Arcade AllRounder");
+            driveMode = 4;  //sets driveMode to Arcade(4)
+            telemetry.addData("Drive Mode", "Bills Premier Arcade AllRounder");  //displays on phone "Bills Premier Arcade AllRounder"
             telemetry.update();
         }
+
         if (gamepad1.x) {
             telemetry.addData("Drive Mode", "Arcade Forward");
             driveMode = 1;
