@@ -66,19 +66,19 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class BillsTeleOp extends OpMode {
     private DcMotor leftMotor; //initializes the left dc motor as DcMotor
-    private DcMotor rightMotor; //initializes the right dc motor  as DcMotor
+    private DcMotor rightMotor;//initializes the right dc motor  as DcMotor
     private int driveMode;   //initializes the drivemode as integer
     private double maxSpeed;  //initializes the maxSpeed as a double
 
     public void init() {
 
-        driveMode = 1; //Sets driveMode to 1
-        leftMotor = hardwareMap.dcMotor.get("leftMotor"); //assigns the variable leftMotor to the left motor in the hardware map
-        rightMotor = hardwareMap.dcMotor.get("rightMotor"); //assigns the variable rightMotor to the right motor in the hardware map
+        driveMode = 1;
+        leftMotor = hardwareMap.dcMotor.get("leftMotor");
+        rightMotor = hardwareMap.dcMotor.get("rightMotor");
 
 
 
-        maxSpeed = 1; // sets max speed to 1
+        maxSpeed = 1;
 
 
 
@@ -130,22 +130,22 @@ public class BillsTeleOp extends OpMode {
 
         if (driveMode == 2) {
             leftMotor.setPower(-1 * (leftY + leftX) * maxSpeed);     //if drivemode is equal to 2 set power of leftmotor to thing
-            rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);        //set power of rightmotor to thing
+            rightMotor.setPower(-1 * (leftY - leftX) * maxSpeed);        //set poscled to wer of rightmotor to thing
         }
         if (driveMode == 4) {
             double scaledRight = scaleInput((y - x) / Math.sqrt(2.0)); //if drivemode is equal to 4
             double scaledLeft = scaleInput((y + x) / Math.sqrt(2.0));
 
-            leftMotor.setPower(scaledLeft / 2);
-            rightMotor.setPower(scaledRight / 2);
+            leftMotor.setPower(scaledLeft / 2); // set the leftMotor power to scaled left/2
+            rightMotor.setPower(scaledRight / 2);// set right motor power to scaled right / 2
         }
 
-        if (gamepad1.dpad_down) {
-            maxSpeed -= 0.01;
-            if (maxSpeed < 0) {
+        if (gamepad1.dpad_down) { // if you press down key on dpad
+            maxSpeed -= 0.01; // maxpeed = maxspeed - 0.01
+            if (maxSpeed < 0) { // if maxspeed is less than zero, set it to zero
                 maxSpeed = 0;
             }
-        } else if (gamepad1.dpad_up) {
+        } else if (gamepad1.dpad_up) { // if dpad is up
             maxSpeed += 0.01;
             if (maxSpeed > 1) {
                 maxSpeed = 1;
