@@ -171,7 +171,7 @@ public class VuMarkIdentification extends LinearOpMode {
                 }
             }
             else {
-                telemetry.addData("VuMark", "not visible");
+                telemetry.addData("VuMark", "Pictograph Not Visible");
             }
 
             telemetry.update();
