@@ -77,7 +77,7 @@ public class BillsTeleOp extends OpMode {
         }
         if (gamepad1.b) {
             driveMode = 4;
-            telemetry.addData("Drive Mode", "Bills Premier Arcade AllRounder");
+            telemetry.addData("Drive Mod    ze", "Bills Premier Arcade AllRounder");
             telemetry.update();
         }
         if (gamepad1.x) {
