@@ -91,13 +91,7 @@ public class BillsTeleOp extends OpMode {
     so that the speed is gradualy decreased if the down is pressed on the d-pad and speed increases
     if up is pressed on the d-pad.
     */
-    public void loop() { /* This loop sets the variables for the right and left joystick and changes
-     the driveMode when the a b x and y to tank, bills arcade, forwards arcade, or backwards arcade
-     and sets the motors power acordingly to the driveMode. Also it sets the left and right motors
-     direction. It makes it so that the speed is gradualy decreased if the down is pressed on the
-     d-pad and speed increases if up is pressed on the d-pad.
-
-*/
+    public void loop() {
         float leftY = -gamepad1.left_stick_y; //sets leftY to the negative y position of the left stick
         float leftX = gamepad1.left_stick_x;   //sets leftX to the x position of the left stick
 
