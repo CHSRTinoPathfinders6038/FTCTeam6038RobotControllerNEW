@@ -35,7 +35,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  * Created by beta on 10/2/17.
  */
 @Autonomous(name = "Autonomousv1.0", group = "Team-A")
-public class BillsAuto {
+public class Auto {
 
 
 }
