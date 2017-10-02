@@ -68,6 +68,8 @@ public class RegisterOpModes
         manager.register("OpMode_IterativeDemo",    OpMode_IterativeDemo.class);
         manager.register("VuMarkIdentification",    VuMarkIdentification.class);
         manager.register("BillsTeleOp",             BillsTeleOp.class);
+        manager.register("BillsTeleOp2",            BillsTeleOpv2.class);
+        manager.register("AutoTest")
 
       //B-Team OpModes
 
