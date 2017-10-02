@@ -30,12 +30,21 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
 
 /**
  * Created by beta on 10/2/17.
  */
 @Autonomous(name = "Autonomousv1.0", group = "Team-A")
-public class AutoTest {
+public class AutoTest extends LinearOpMode{
 
+    public void runOpMode() {
+
+    }
 
 }
