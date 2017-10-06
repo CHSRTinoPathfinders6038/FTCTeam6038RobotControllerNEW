@@ -59,12 +59,16 @@ public class BillsAuto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
+
+        //Pre-condition: on Balancing pad facing the two jewels.
+        //Post-conditon: on marked off area of cryptobox facing the cryptobox.
         encoderDrive(DRIVE_SPEED, 12, 12, 5.0);  // S1: Forward 47 Inches
         //Use Mechanism to knock off the correct color ball
         encoderDrive(TURN_SPEED, -12, 12, 4.0);  // S2: Turn left 90º
         encoderDrive(DRIVE_SPEED, 5, 5, 2.5); // Move forwafrds 5 inches
         encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right 90º
         // Scan pictograph
+        encoderDrive(DRIVE_SPEED, -12, -12, 5.0) // move backwards 12 inches away from pictograph
         encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right 90º
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0); //move forwards 48 inches
         encoderDrive(TURN_SPEED, -12, 12, 4.0); //turn Left 90º
