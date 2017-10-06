@@ -68,7 +68,7 @@ public class BillsAuto extends LinearOpMode {
         encoderDrive(DRIVE_SPEED, 5, 5, 2.5); // Move forwafrds 5 inches
         encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right 90º
         // Scan pictograph
-        encoderDrive(DRIVE_SPEED, -12, -12, 5.0) // move backwards 12 inches away from pictograph
+        encoderDrive(DRIVE_SPEED, -12, -12, 5.0); // move backwards 12 inches away from pictograph
         encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right 90º
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0); //move forwards 48 inches
         encoderDrive(TURN_SPEED, -12, 12, 4.0); //turn Left 90º
