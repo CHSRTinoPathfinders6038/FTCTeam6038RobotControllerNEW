@@ -59,10 +59,24 @@ public class BillsAuto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED, 48, 48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, 12, 12, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+        //Use Mechanism to knock off the correct color ball
+        encoderDrive(TURN_SPEED, -12, 12, 4.0);  // S2: Turn left 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, 5, 5, 2.5); // Move forwafrds 5 inches
+        encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right
+        // Scan pictograph
+        encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right
+        encoderDrive(DRIVE_SPEED, 48, 48, 5.0); //move forwards 48 inches
+        encoderDrive(TURN_SPEED, -12, 12, 4.0); //turn Left
+        //put pre-loaded ball into correct crytobox column
+        //stay in marked off area to get more points until the end of autonomous
 
+
+
+
+
+        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive();
         robot.leftClaw.setPosition(1.0);            // S4: Stop and close the claw.
         robot.rightClaw.setPosition(0.0);
         sleep(1000);     // pause for servos to move
