@@ -30,7 +30,7 @@ public class BillsAuto extends LinearOpMode {
             (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double DRIVE_SPEED = 0.6;
     static final double TURN_SPEED = 0.5;
-    public static final double MID_SERVO = 0.5 ;
+    public static final double MID_SERVO = 0.5 ;// set position to 90º
 
     @Override
     public void runOpMode() {
@@ -58,7 +58,7 @@ public class BillsAuto extends LinearOpMode {
                 telemetry.addData("VuMark", "%s Cryptobox Column", vuMark);
         }
 
-        
+
 
         /**
         /*
@@ -94,12 +94,16 @@ public class BillsAuto extends LinearOpMode {
          */
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0);
         if (vuMark == RelicRecoveryVuMark.RIGHT) {
-
+            encoderDrive(TURN_SPEED, 4, -4, 1);// turn Right 30º
+            encoderDrive(DRIVE_SPEED, 4, 4, 5.0);//move to the optimal distance
+            encoderDrive(TURN_SPEED, -4, 4, 1);//turn left 30º
+            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
 
         }
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
         encoderDrive(TURN_SPEED, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+
 
         robot.leftClaw.setPosition(1.0);            // S4: Stop and close the claw.
         robot.rightClaw.setPosition(0.0);
