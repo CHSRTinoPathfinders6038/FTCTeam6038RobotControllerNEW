@@ -99,19 +99,15 @@ public class BillsAuto extends LinearOpMode {
             encoderDrive(TURN_SPEED, -4, 4, 1);//turn left 30º
             encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
 
-        }else {
-            if (vuMark == RelicRecoveryVuMark.LEFT) {
+        }else if (vuMark == RelicRecoveryVuMark.LEFT){
+
                 encoderDrive(TURN_SPEED, -4, 4, 1);// turn left 30º
                 encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance
                 encoderDrive(TURN_SPEED, 4, -4, 1);//turn right 30º
                 encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
-
-            }else {
-                if (vuMark == RelicRecoveryVuMark.CENTER) {
-                    encoderDrive(DRIVE_SPEED, 12, 12, 1);//move to the optimal distance for the mechanism to put the glphy in the box
-
-                }
-            }
+        }
+        else{
+                encoderDrive(DRIVE_SPEED, 12, 12, 1);//move to the optimal distance for the mechanism to put the glphy in the box
         }
 
 
