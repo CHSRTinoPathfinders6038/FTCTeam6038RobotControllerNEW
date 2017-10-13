@@ -106,7 +106,7 @@ public class BillsTeleOp extends OpMode {
             telemetry.addData("Drive Mode", "Tank Drive Test");  //displays on phone "Tank Drive Test"
             driveMode = 3;  //sets driveMode to tank(3)
         }
-        if (gamepad1.b) { //If the b button is pressed it sets the driveMode to Bills arcade allrounder
+        if (gamepad1.b) { //If the b button is pressed it sets the driveMode to Bills arcadeallrounder
             driveMode = 4;  //sets driveMode to Arcade(4)
             telemetry.addData("Drive Mode", "Bills Premier Arcade AllRounder");  //displays on phone "Bills Premier Arcade AllRounder"
             telemetry.update();
