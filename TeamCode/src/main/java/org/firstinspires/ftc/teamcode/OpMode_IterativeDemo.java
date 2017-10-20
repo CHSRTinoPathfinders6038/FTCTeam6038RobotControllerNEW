@@ -90,10 +90,10 @@ public double maxSpeed;
             maxSpeed = 0.5;
         }
         if (gamepad1.b){
-        driveMode = 3;
-            maxSpeed = 0.01;
+        driveMode = 2;
+            maxSpeed = 0.5;
         }
-telemetry.addData("DriverMode", "Bill is a god");
+
         if (maxSpeed>0.5){
         maxSpeed=maxSpeed-0.01;
         }
@@ -109,7 +109,7 @@ telemetry.addData("DriverMode", "Bill is a god");
             velocity += 0.01;
             if (velocity > maxSpeed) {
                 velocity = maxSpeed;
-
+                h
             }
         }
 
@@ -126,7 +126,7 @@ telemetry.addData("DriverMode", "Bill is a god");
         // gampepad 1--decrase by 0.01
         // gamepad b-increases by 0.07
 
-
+    }
 
     /*
      * Code to run ONCE after the driver hits STOP

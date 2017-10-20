@@ -5,6 +5,8 @@ package org.firstinspires.ftc.teamcode;
  */
 
 
+import android.os.UserManager;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -16,6 +18,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+
+import android.app.ActivityManager;
+import android.widget.Toast;
 
 @Autonomous(name="BillsAuto", group="Team-A")
 public class BillsAuto extends LinearOpMode {
@@ -32,8 +37,13 @@ public class BillsAuto extends LinearOpMode {
     static final double TURN_SPEED = 0.5;
     public static final double MID_SERVO = 0.5 ;// set position to 90º
 
+    //ActivityManager user = new ActivityManager;
+    //public static monkey =
     @Override
     public void runOpMode() {
+        boolean monkey = ActivityManager.isUserAMonkey();
+        telemetry.addData("MONKEY", "Is User a Monkey?: " + !monkey);
+
         robot.leftClaw.setPosition(MID_SERVO);
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
@@ -99,20 +109,20 @@ public class BillsAuto extends LinearOpMode {
             encoderDrive(TURN_SPEED, -4, 4, 1);//turn left 30º
             encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
 
-        }else if (vuMark == RelicRecoveryVuMark.LEFT){
-
-                encoderDrive(TURN_SPEED, -4, 4, 1);// turn left 30º
-                encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance
-                encoderDrive(TURN_SPEED, 4, -4, 1);//turn right 30º
-                encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
-        }
-        else{
-                encoderDrive(DRIVE_SPEED, 12, 12, 1);//move to the optimal distance for the mechanism to put the glphy in the box
         }
 
+        if (vuMark == RelicRecoveryVuMark.LEFT) {
+            encoderDrive(TURN_SPEED, -4, 4, 1);// turn left 30º
+            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance
+            encoderDrive(TURN_SPEED, 4, -4, 1);//turn right 30º
+            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
 
+        }
 
+        if (vuMark == RelicRecoveryVuMark.CENTER) {
+            encoderDrive(DRIVE_SPEED, 12, 12, 1);//move to the optimal distance for the mechanism to put the glphy in the box
 
+        }
 
         encoderDrive(DRIVE_SPEED, 48, 48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
         encoderDrive(TURN_SPEED, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
