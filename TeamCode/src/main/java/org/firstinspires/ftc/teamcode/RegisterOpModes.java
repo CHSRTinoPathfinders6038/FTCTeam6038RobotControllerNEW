@@ -65,8 +65,10 @@ public class RegisterOpModes
       // Or add your own lines to register your Team opmodes.
 
       //A-Team OpModes
+        /**
         manager.register("OpMode_IterativeDemo",    OpMode_IterativeDemo.class);
         manager.register("VuMarkIdentification",    VuMarkIdentification.class);
+         */
         manager.register("BillsTeleOp",             BillsTeleOp.class);
         manager.register("BillsTeleOpv2",           BillsTeleOpv2.class);
 

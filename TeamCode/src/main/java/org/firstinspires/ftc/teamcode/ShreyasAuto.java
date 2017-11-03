@@ -1,30 +1,29 @@
 package org.firstinspires.ftc.teamcode;
 
-/**
- * Created by beta on 10/2/17.
- */
-
-
-import android.os.UserManager;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import android.app.ActivityManager;
-import android.widget.Toast;
 
-@Autonomous(name="BillsAuto", group="Team-A")
-public class BillsAuto extends LinearOpMode {
-    VuforiaLocalizer vuforia;
+
+
+
+        import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+        import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+        import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+        import com.qualcomm.robotcore.hardware.DcMotor;
+        import com.qualcomm.robotcore.util.ElapsedTime;
+        import com.qualcomm.robotcore.util.Range;
+
+        import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
+
+@Autonomous(name="ShreyasAuto", group="Team-A")
+public class ShreyasAuto extends LinearOpMode {
+
     HardwarePushbot robot = new HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -35,42 +34,10 @@ public class BillsAuto extends LinearOpMode {
             (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double DRIVE_SPEED = 0.6;
     static final double TURN_SPEED = 0.5;
-    public static final double MID_SERVO = 0.5 ;// set position to 90º
 
-    //ActivityManager user = new ActivityManager;
-    //public static monkey =
     @Override
     public void runOpMode() {
-        boolean monkey = ActivityManager.isUserAMonkey();
-        telemetry.addData("MONKEY", "Is User a Monkey?: " + !monkey);
 
-        robot.leftClaw.setPosition(MID_SERVO);
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
-        parameters.vuforiaLicenseKey = "AQAX3E3/////AAAAGdgJXbEfEE46jUtAgvCh+zMUcooC2pw0cQDyryTvAbzTT2bmfa/ICA2USBJPIOiJtcgkSyFwQhTaks3Ndugus5lHtobUBjgZEWrNrK2xn5AaHO0SMhue0doJ27KsgiuZ6izxPwq5ZwFF3ZrceHDR8oQ1rLgnq2wTPb4NjCYEQToHUoGIjGU6htR7ctOjp11zgNFicEu6vC1/jBV2C1lx6TZ9H8G+4Ea9TzH7XIuuQ4aZuUMnHrS8NSdjNpLp8N2Qu/UlNPkP1qgHiKMhllHei/n5NL8dPxS7Gd6vyY6HsK1M3HKTgGtKoRXpfdWSH9UotSVkUFccH3mTmO3+tvDiL8KKpNtVn6vWbHQQJ6BE9O93";
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
-        VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
-        VuforiaTrackable relicTemplate = relicTrackables.get(0);
-        relicTemplate.setName("relicVuMarkTemplate"); // can help in debugging; otherwise not necessary
-
-        telemetry.addData(">", "Press Play to start");
-        telemetry.update();
-        waitForStart();
-
-        relicTrackables.activate();
-        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-        while (vuMark != RelicRecoveryVuMark.UNKNOWN)
-        {
-
-
-
-                telemetry.addData("VuMark", "%s Cryptobox Column", vuMark);
-        }
-
-
-
-        /**
         /*
          * Initialize the drive system variables.
          * The init() method of the hardware class does all the work here
@@ -98,39 +65,21 @@ public class BillsAuto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        /**
-         * This is the autonomous code that includes the encoder drive
-         * to the columns
-         */
-        encoderDrive(DRIVE_SPEED, 48, 48, 5.0);
-        if (vuMark == RelicRecoveryVuMark.RIGHT) {
-            encoderDrive(TURN_SPEED, 4, -4, 1);// turn Right 30º
-            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance
-            encoderDrive(TURN_SPEED, -4, 4, 1);//turn left 30º
-            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
 
-        }
-
-        if (vuMark == RelicRecoveryVuMark.LEFT) {
-            encoderDrive(TURN_SPEED, -4, 4, 1);// turn left 30º
-            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance
-            encoderDrive(TURN_SPEED, 4, -4, 1);//turn right 30º
-            encoderDrive(DRIVE_SPEED, 4, 4, 1);//move to the optimal distance for the mechanism to put the glphy in the box
-
-        }
-
-        if (vuMark == RelicRecoveryVuMark.CENTER) {
-            encoderDrive(DRIVE_SPEED, 12, 12, 1);//move to the optimal distance for the mechanism to put the glphy in the box
-
-        }
-
-        encoderDrive(DRIVE_SPEED, 48, 48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
-
-
-        robot.leftClaw.setPosition(1.0);            // S4: Stop and close the claw.
-        robot.rightClaw.setPosition(0.0);
+        //Pre-condition: on Balancing pad facing the two jewels.
+        //Post-conditon: on marked off area of cryptobox facing the cryptobox.
+        encoderDrive(DRIVE_SPEED, 12, 12, 5.0);  // S1: Forward 47 Inches
+        //Use Mechanism to knock off the correct color ball
+        encoderDrive(TURN_SPEED, -12, 12, 4.0);  // S2: Turn left 90º
+        encoderDrive(DRIVE_SPEED, 5, 5, 2.5); // Move forwafrds 5 inches
+        encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right 90º
+        // Scan pictograph
+        encoderDrive(DRIVE_SPEED, -12, -12, 5.0); // move backwards 12 inches away from pictograph
+        encoderDrive(TURN_SPEED, 12, -12, 4.0); //turn Right 90º
+        encoderDrive(DRIVE_SPEED, 48, 48, 5.0); //move forwards 48 inches
+        encoderDrive(TURN_SPEED, -12, 12, 4.0); //turn Left 90º
+        //put pre-loaded ball into correct crytobox column with mechanism
+        //stay in marked off area to get more points until the end of autonomous
         sleep(1000);     // pause for servos to move
 
         telemetry.addData("Path", "Complete");

@@ -42,8 +42,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.externaimport org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+        l.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 /**
@@ -65,6 +65,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  * is explained in {@link ConceptVuforiaNavigation}.
  */
 
+
 @Autonomous(name="Concept: VuMark Id", group ="Concept")
 //@Disabled
 public class VuMarkIdentification extends LinearOpMode {
@@ -72,7 +73,6 @@ public class VuMarkIdentification extends LinearOpMode {
     public static final String TAG = "Vuforia VuMark Sample";
 
     OpenGLMatrix lastLocation = null;
-    String vuforiaLicenseKey;
     //Last location stored based on the gl location
 
     /**
@@ -83,15 +83,15 @@ public class VuMarkIdentification extends LinearOpMode {
 
     @Override public void runOpMode() {
 
-        /*
-         * To start up Vuforia, tell it the view that we wish to use for camera monitor (on the RC phone);
+        /         * To start up Vuforia, tell it  wish to use for camera monitor (on the RC phone);
+*
          * If no camera monitor is desired, use the parameterless constructor instead (commented out below).
-         */
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+         */MonitorVi
+        int cameraeIwd = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        VuforiaLocalizer.Parameters parameters = new Vufthe view that weoriaLocalizer.Parameters(cameraMonitorViewId);
 
         // OR...  Do Not Activate the Camera Monitor View, to save power
-        // VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
+        // VuforiaLocalizer. parParametersameters = new VuforiaLocalizer.Parameters();
 
         /*
          * IMPORTANT: You need to obtain your own license key to use Vuforia.The string below with which
@@ -105,7 +105,7 @@ public class VuMarkIdentification extends LinearOpMode {
          * Once you've obtained a license key, copy the string from the Vuforia web site
          * and paste it in to your code onthe next line, between the double quotes.
          */
-        parameters.vuforiaLicenseKey = "AXG/Ni////AAAAGUHeu1xWUkPYrhve3amVoiVAgYbt/FlIc54cU9/z/oaO1VsWhheEtzizS5124VeNin+J2r6DI3LQxxieCMxAbrduPkLFPCqPIMTMmcW+6/KEC40qNe2qZQmh59KtbWfbW+69ZOTbTZ9+ROcK0ICv2EjZi4LYkl7aC0xPpMR75jGd20/Kb+JAVVSqWGZk1UPSiwnhnJiKyL5udnijJEUx3qYDmCKOs4aYBpb6YNKLbGr3BJQavYdckQSWLWfK55PMc9/miOnTawWwb5dyVas95ZonUFXyVsNeexIDhgGgRgI9UWE/kfCbn9ShC3qEiw5sDgUtfo37t+6dhDibABcu/EQwCG9+QpQ5aN/awOkyilyk";
+        parameters.vuforiaLicenseKey = "AQAX3E3/////AAAAGdgJXbEfEE46jUtAgvCh+zMUcooC2pw0cQDyryTvAbzTT2bmfa/ICA2USBJPIOiJtcgkSyFwQhTaks3Ndugus5lHtobUBjgZEWrNrK2xn5AaHO0SMhue0doJ27KsgiuZ6izxPwq5ZwFF3ZrceHDR8oQ1rLgnq2wTPb4NjCYEQToHUoGIjGU6htR7ctOjp11zgNFicEu6vC1/jBV2C1lx6TZ9H8G+4Ea9TzH7XIuuQ4aZuUMnHrS8NSdjNpLp8N2Qu/UlNPkP1qgHiKMhllHei/n5NL8dPxS7Gd6vyY6HsK1M3HKTgGtKoRXpfdWSH9UotSVkUFccH3mTmO3+tvDiL8KKpNtVn6vWbHQQJ6BE9O93";
         //Declare the api key
         /*
          * We also indicate which camera on the RC that we wish to use.
@@ -140,7 +140,7 @@ public class VuMarkIdentification extends LinearOpMode {
              * UNKNOWN will be returned by {@link RelicRecoveryVuMark#from(VuforiaTrackable)}.
              */
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-            if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+            if ( vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
                 /* Found an instance of the template. In the actual game, you will probably
                  * loop until this condition occurs, then move on to act accordingly depending
@@ -184,5 +184,3 @@ public class VuMarkIdentification extends LinearOpMode {
 }
 
 /* gampad 1 a change cange speed by -0.01 if below zero change too zero
-
- */
