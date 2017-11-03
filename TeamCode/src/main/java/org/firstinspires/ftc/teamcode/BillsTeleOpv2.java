@@ -142,14 +142,16 @@ public class BillsTeleOpv2 extends OpMode {
 
         switch (driveMode) {
             case ARCADE_MODE:
+                // May need to negate both x and y based on if values do not apply to the
+                //REV Robotics HD Hex Motor
                 double x = gamepad1.right_stick_x;
                 double y = -gamepad1.right_stick_y;
 
                 double scaledRight = scaleInput((y - x) / Math.sqrt(2.0));
                 double scaledLeft = scaleInput((y + x) / Math.sqrt(2.0));
 
-                leftMotor.setPower((scaledLeft / 2) * maxSpeed);
-                rightMotor.setPower((scaledRight / 2) * maxSpeed);
+                leftMotor.setPower((scaledLeft) * maxSpeed);
+                rightMotor.setPower((scaledRight) * maxSpeed);
                 break;
             case TANK_MODE:
                 double ly = -gamepad1.left_stick_y;
@@ -162,6 +164,8 @@ public class BillsTeleOpv2 extends OpMode {
 
                 double leftPower;
                 double rightPower;
+
+                // May need negate the values, and respectively for the OPP_POV mode.
 
                 double drive = -gamepad1.left_stick_y;
                 double turn  =  gamepad1.right_stick_x;
@@ -178,11 +182,11 @@ public class BillsTeleOpv2 extends OpMode {
                 break;
             case OPP_POV_MODE:
 
-                drive = -gamepad1.left_stick_y;
-                turn  =  gamepad1.right_stick_x;
+                drive = -gamepad1.right_stick_y;
+                turn  =  gamepad1.left_stick_x;
 
-                leftPower = Range.clip(drive - turn, -1.0, 1.0) ;
-                rightPower = Range.clip(drive + turn, -1.0, 1.0) ;
+                leftPower = Range.clip(drive + turn, -1.0, 1.0) ;
+                rightPower = Range.clip(drive - turn, -1.0, 1.0) ;
 
 
                 leftMotor.setPower((leftPower) * maxSpeed);
