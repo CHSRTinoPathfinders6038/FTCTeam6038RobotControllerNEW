@@ -42,8 +42,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.externaimport org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-        l.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 /**
@@ -68,119 +69,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 @Autonomous(name="Concept: VuMark Id", group ="Concept")
 //@Disabled
-public class VuMarkIdentification extends LinearOpMode {
+public class VuMarkIdentification  {
 
-    public static final String TAG = "Vuforia VuMark Sample";
 
-    OpenGLMatrix lastLocation = null;
-    //Last location stored based on the gl location
-
-    /**
-     * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
-     * localization engine.
-     */
-    VuforiaLocalizer vuforia;
-
-    @Override public void runOpMode() {
-
-        /         * To start up Vuforia, tell it  wish to use for camera monitor (on the RC phone);
-*
-         * If no camera monitor is desired, use the parameterless constructor instead (commented out below).
-         */MonitorVi
-        int cameraeIwd = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parameters = new Vufthe view that weoriaLocalizer.Parameters(cameraMonitorViewId);
-
-        // OR...  Do Not Activate the Camera Monitor View, to save power
-        // VuforiaLocalizer. parParametersameters = new VuforiaLocalizer.Parameters();
-
-        /*
-         * IMPORTANT: You need to obtain your own license key to use Vuforia.The string below with which
-         * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
-         * A Vuforia 'Development' license key, can be obtained free of charge from the Vuforia developer
-         * web site at https://developer.vuforia.com/license-manager.
-         *
-         * Vuforia license keys are always 380 characters long, and look as if they contain mostly
-         * random data. As an example, here is a example of a fragment of a valid key:
-         *      ... yIgIzTqZ4mWjk9wd3cZO9T1axEqzuhxoGlfOOI2dRzKS4T0hQ8kT ...
-         * Once you've obtained a license key, copy the string from the Vuforia web site
-         * and paste it in to your code onthe next line, between the double quotes.
-         */
-        parameters.vuforiaLicenseKey = "AQAX3E3/////AAAAGdgJXbEfEE46jUtAgvCh+zMUcooC2pw0cQDyryTvAbzTT2bmfa/ICA2USBJPIOiJtcgkSyFwQhTaks3Ndugus5lHtobUBjgZEWrNrK2xn5AaHO0SMhue0doJ27KsgiuZ6izxPwq5ZwFF3ZrceHDR8oQ1rLgnq2wTPb4NjCYEQToHUoGIjGU6htR7ctOjp11zgNFicEu6vC1/jBV2C1lx6TZ9H8G+4Ea9TzH7XIuuQ4aZuUMnHrS8NSdjNpLp8N2Qu/UlNPkP1qgHiKMhllHei/n5NL8dPxS7Gd6vyY6HsK1M3HKTgGtKoRXpfdWSH9UotSVkUFccH3mTmO3+tvDiL8KKpNtVn6vWbHQQJ6BE9O93";
-        //Declare the api key
-        /*
-         * We also indicate which camera on the RC that we wish to use.
-         * Here we chose the back (HiRes) camera (for greater range), but
-         * for a competition robot, the front camera might be more convenient.
-         */
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
-
-        /**
-         * Load the data set containing the VuMarks for Relic Recovery. There's only one trackable
-         * in this data set: all three of the VuMarks in the game were created from this one template,
-         * but differ in their instance id information.
-         * @see VuMarkInstanceId
-         */
-        VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
-        VuforiaTrackable relicTemplate = relicTrackables.get(0);
-        relicTemplate.setName("relicVuMarkTemplate"); // can help in debugging; otherwise not necessary
-
-        telemetry.addData(">", "Press Play to start");
-        telemetry.update();
-        waitForStart();
-
-        relicTrackables.activate();
-
-        while (opModeIsActive()) {
-
-            /**
-             * See if any of the instances of {@link relicTemplate} are currently visible.
-             * {@link RelicRecoveryVuMark} is an enum which can have the following values:
-             * UNKNOWN, LEFT, CENTER, and RIGHT. When a VuMark is visible, something other than
-             * UNKNOWN will be returned by {@link RelicRecoveryVuMark#from(VuforiaTrackable)}.
-             */
-            RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-            if ( vuMark != RelicRecoveryVuMark.UNKNOWN) {
-
-                /* Found an instance of the template. In the actual game, you will probably
-                 * loop until this condition occurs, then move on to act accordingly depending
-                 * on which VuMark was visible. */
-                telemetry.addData("VuMark", "%s Cryptobox Column", vuMark);
-
-                /* For fun, we also exhibit the navigational pose. In the Relic Recovery game,
-                 * it is perhaps unlikely that you will actually need to act on this pose information, but
-                 * we illustrate it nevertheless, for completeness. */
-                OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
-                telemetry.addData("Pose", format(pose));
-
-                /* We further illustrate how to decompose the pose into useful rotational and
-                 * translational components */
-                if (pose != null) {
-                    VectorF trans = pose.getTranslation();
-                    Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES);
-
-                    // Extract the X, Y, and Z components of the offset of the target relative to the robot
-                    double tX = trans.get(0);
-                    double tY = trans.get(1);
-                    double tZ = trans.get(2);
-
-                    // Extract the rotational components of the target relative to the robot
-                    double rX = rot.firstAngle;
-                    double rY = rot.secondAngle;
-                    double rZ = rot.thirdAngle;
-                }
-            }
-            else {
-                telemetry.addData("VuMark", "Pictograph Not Visible");
-            }
-
-            telemetry.update();
-        }
-    }
-
-    String format(OpenGLMatrix transformationMatrix) {
-        return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
-    }
 }
 
 /* gampad 1 a change cange speed by -0.01 if below zero change too zero
+
+ */
