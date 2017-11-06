@@ -200,6 +200,17 @@ public class BillsTeleOpv2 extends OpMode {
             }
         }
 
+        if (gamepad1.dpad_down) {
+            maxSpeed -= 0.01;
+            if (maxSpeed < 0) {
+                maxSpeed = 0;
+            }
+        } else if (gamepad1.dpad_up) {
+            maxSpeed += 0.01;
+            if (maxSpeed > 1) {
+                maxSpeed = 1; 
+            }
+        }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Current Max Speed", maxSpeed * 100 + "%");
