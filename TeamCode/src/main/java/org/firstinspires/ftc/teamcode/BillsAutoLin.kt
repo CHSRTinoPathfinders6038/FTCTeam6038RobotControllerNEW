@@ -25,7 +25,7 @@ import android.app.ActivityManager
 import android.widget.Toast
 import org.firstinspires.ftc.teamcode.BillsAuto.MID_SERVO
 
-@Autonomous(name = "BillsAuto", group = "Team-A")
+@Autonomous(name = "BillsAutoLin", group = "Team-A")
 class BillsAutoLin : LinearOpMode() {
     internal lateinit var vuforia: VuforiaLocalizer
     internal var robot = HardwarePushbot()   // Use a Pushbot's hardware

@@ -219,6 +219,20 @@ public class BillsTeleOpv3 extends OpMode {
             }
         }
 
+        if (gamepad1.left_bumper) {
+            servoPosition -= 0.1;
+            if (servoPosition < 0) {
+                servoPosition = 0;
+            }
+        } else if (gamepad1.right_bumper) {
+            servoPosition += 0.1;
+            if (servoPosition > 1) {
+                servoPosition = 0;
+            }
+        }
+
+        jewelKnocker.setPosition(servoPosition);
+
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Current Max Speed", maxSpeed * 100 + "%");
         telemetry.update();
