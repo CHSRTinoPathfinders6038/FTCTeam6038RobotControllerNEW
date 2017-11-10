@@ -68,10 +68,8 @@ public class BillsTeleOp extends OpMode {
     private int driveMode;   //initializes the drivemode as integer
     private double maxSpeed;  //initializes the maxSpeed as a double
 
-    public void init() { /* this loop sets driveMode to 1 and max speed to 1. It assignes the
-    variable leftMotor to the left motor in the hardware map. It assignes the variable rightMotor to
-    the right motor in the hardware map.
-*/
+    public void init() {
+
         driveMode = 1;
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
@@ -83,13 +81,10 @@ public class BillsTeleOp extends OpMode {
 
 
     }
-    /* This loop sets the variables for the right and left joystick and changes the driveMode when the
-    a b x and y to tank, bills arcade, forwards arcade, or backwards arcade and sets the motors
-    power acordingly to the driveMode. Also it sets the left and right motors direction. It makes it
-    so that the speed is gradualy decreased if the down is pressed on the d-pad and speed increases
-    if up is pressed on the d-pad.
-    */
+
     public void loop() {
+
+
         float leftY = -gamepad1.left_stick_y; //sets leftY to the negative y position of the left stick
         float leftX = gamepad1.left_stick_x;   //sets leftX to the x position of the left stick
 
@@ -150,8 +145,8 @@ public class BillsTeleOp extends OpMode {
             }
         } else if (gamepad1.dpad_up) { // if dpad is up
             maxSpeed += 0.01; // maxspeed +0.01
-            if (maxSpeed > 1) { // if maxspeed is greater than 1
-                maxSpeed = 1; // set maxspeed to 1 (maxspeeds maximum is 1)
+            if (maxSpeed > 1) { // if maxspeed is less than 1
+                maxSpeed = 1; // set maxspeed to 1
             }
         }
 

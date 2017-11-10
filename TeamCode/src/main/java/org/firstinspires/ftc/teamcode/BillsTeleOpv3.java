@@ -48,19 +48,25 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-@TeleOp(name = "TeleOpv2.0", group = "Team-A")
+@TeleOp(name = "TeleOpv3.0", group = "Team-A")
 
 
-public class BillsTeleOpv2 extends OpMode {
+public class BillsTeleOpv3 extends OpMode {
     private DcMotor leftMotor;
     private DcMotor rightMotor;
+    private Servo jewelKnocker;
     private DriveMode driveMode;
     private double maxSpeed;
+    double  servoPosition;
+    static final double MAX_POS     =  1.0;
+    static final double MIN_POS     =  0.0;
     private ElapsedTime runtime = new ElapsedTime();
     Telemetry.Item elapsedTime;
 
@@ -80,12 +86,15 @@ public class BillsTeleOpv2 extends OpMode {
     public void init() {
 
         driveMode = DriveMode.ARCADE_MODE;
+        servoPosition = (MAX_POS - MIN_POS) / 2;
 
-        leftMotor  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightMotor = hardwareMap.get(DcMotor.class, "right_drive");
+        leftMotor  = hardwareMap.get(DcMotor.class, "leftMotor");
+        rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
 
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
         rightMotor.setDirection(DcMotor.Direction.FORWARD);
+
+        jewelKnocker = hardwareMap.get(Servo.class, "jewel");
 
         maxSpeed = 1;
 
@@ -193,9 +202,9 @@ public class BillsTeleOpv2 extends OpMode {
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
                 telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
 
-            if (maxSpeed > 1) {
-                maxSpeed = 1;
-            }
+                if (maxSpeed > 1) {
+                    maxSpeed = 1;
+                }
         }
 
         if (gamepad1.dpad_down) {
@@ -206,25 +215,28 @@ public class BillsTeleOpv2 extends OpMode {
         } else if (gamepad1.dpad_up) {
             maxSpeed += 0.01;
             if (maxSpeed > 1) {
-                maxSpeed = 1; 
+                maxSpeed = 1;
             }
         }
+
+        if (gamepad1.left_bumper) {
+            servoPosition -= 0.1;
+            if (servoPosition < 0) {
+                servoPosition = 0;
+            }
+        } else if (gamepad1.right_bumper) {
+            servoPosition += 0.1;
+            if (servoPosition > 1) {
+                servoPosition = 0;
+            }
+        }
+
+        jewelKnocker.setPosition(servoPosition);
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Current Max Speed", maxSpeed * 100 + "%");
         telemetry.update();
 
-        if (gamepad1.dpad_down) { // if you press downkey on dpad
-            maxSpeed -= 0.01; // maxpeed = maxspeed - 0.01
-            if (maxSpeed < 0) { // if maxspeed is less than zero, set it to zero
-                maxSpeed = 0;
-            }
-        } else if (gamepad1.dpad_up) { // if dpad is up
-            maxSpeed += 0.01; // maxspeed +0.01
-            if (maxSpeed > 1) { // if maxspeed is greater than 1
-                maxSpeed = 1; // set maxspeed to 1 (maxspeeds maximum is 1)
-            }
-        }
     }
 
     double scaleInput(double dVal)  {
@@ -257,3 +269,4 @@ public class BillsTeleOpv2 extends OpMode {
         return dScale;
     }
 }
+
