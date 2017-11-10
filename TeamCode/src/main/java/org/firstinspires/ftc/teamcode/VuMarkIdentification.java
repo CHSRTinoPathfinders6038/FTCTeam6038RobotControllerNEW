@@ -42,8 +42,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.externaimport org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-        l.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 /**
@@ -83,12 +83,12 @@ public class VuMarkIdentification extends LinearOpMode {
 
     @Override public void runOpMode() {
 
-        /         * To start up Vuforia, tell it  wish to use for camera monitor (on the RC phone);
-*
+         /*
+         * To start up Vuforia, tell it the view that we wish to use for camera monitor (on the RC phone);
          * If no camera monitor is desired, use the parameterless constructor instead (commented out below).
-         */MonitorVi
-        int cameraeIwd = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parameters = new Vufthe view that weoriaLocalizer.Parameters(cameraMonitorViewId);
+         */
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
         // OR...  Do Not Activate the Camera Monitor View, to save power
         // VuforiaLocalizer. parParametersameters = new VuforiaLocalizer.Parameters();

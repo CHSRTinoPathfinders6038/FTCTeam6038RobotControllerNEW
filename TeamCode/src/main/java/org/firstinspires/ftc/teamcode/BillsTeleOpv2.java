@@ -48,8 +48,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -178,11 +176,11 @@ public class BillsTeleOpv2 extends OpMode {
                 break;
             case OPP_POV_MODE:
 
-                drive = -gamepad1.left_stick_y;
-                turn  =  gamepad1.right_stick_x;
+                drive = -gamepad1.right_stick_y;
+                turn  =  gamepad1.left_stick_x;
 
-                leftPower = Range.clip(drive - turn, -1.0, 1.0) ;
-                rightPower = Range.clip(drive + turn, -1.0, 1.0) ;
+                leftPower = Range.clip(drive + turn, -1.0, 1.0) ;
+                rightPower = Range.clip(drive - turn, -1.0, 1.0) ;
 
 
                 leftMotor.setPower((leftPower) * maxSpeed);
@@ -201,6 +199,17 @@ public class BillsTeleOpv2 extends OpMode {
         telemetry.addData("Current Max Speed", maxSpeed * 100 + "%");
         telemetry.update();
 
+        if (gamepad1.dpad_down) { // if you press downkey on dpad
+            maxSpeed -= 0.01; // maxpeed = maxspeed - 0.01
+            if (maxSpeed < 0) { // if maxspeed is less than zero, set it to zero
+                maxSpeed = 0;
+            }
+        } else if (gamepad1.dpad_up) { // if dpad is up
+            maxSpeed += 0.01; // maxspeed +0.01
+            if (maxSpeed > 1) { // if maxspeed is greater than 1
+                maxSpeed = 1; // set maxspeed to 1 (maxspeeds maximum is 1)
+            }
+        }
     }
 
     double scaleInput(double dVal)  {
