@@ -183,7 +183,7 @@ public class BillsAuto extends LinearOpMode {
             else {
                 telemetry.addData("VuMark", "Pictograph Not Visible");
             }
-            //science guys
+            //science guy
 
             if (vuMark == RelicRecoveryVuMark.RIGHT) {
                 driveToLine();
