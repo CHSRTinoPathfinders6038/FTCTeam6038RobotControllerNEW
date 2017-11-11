@@ -64,6 +64,7 @@ public class BillsAuto extends LinearOpMode {
          * The init() method of the hardware class does all the work here
          */
         robot.init(hardwareMap);
+        colorSensor = hardwareMap.colorSensor.get("cr");
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");    //
@@ -323,7 +324,7 @@ public class BillsAuto extends LinearOpMode {
         encoderDrive(TURN_SPEED, factor * turnDistance, -factor * turnDistance, turnDistance/ROBOT_SPEED + 0.5);
     }
 
-    /**
+
     public String getColor(ColorSensor sensorColor)
     {
         telemetry.addData("LED", "Off");
@@ -336,6 +337,8 @@ public class BillsAuto extends LinearOpMode {
         else if(sensorColor.red() < sensorColor.blue()) return "BLUE";
         return null;
     }
+
+
     public void forwardUntilLine()
     {
         while (getColor(colorSensor) == null)
@@ -346,10 +349,11 @@ public class BillsAuto extends LinearOpMode {
         robot.leftDrive.setPower(0.0);
         robot.rightDrive.setPower(0.0);
     }
+
     public String detectJewel() {
         return getColor(jewelSensor);
 
     }
 
-     */
+
 }
