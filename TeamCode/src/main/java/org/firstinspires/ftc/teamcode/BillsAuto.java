@@ -65,6 +65,7 @@ public class BillsAuto extends LinearOpMode {
          */
         robot.init(hardwareMap);
         colorSensor = hardwareMap.colorSensor.get("cr");
+        jewelSensor = hardwareMap.colorSensor.get("js");
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");    //
