@@ -48,7 +48,7 @@ public class BillsAuto extends LinearOpMode {
         }
         if(detectJewel().equals("BLUE"))
         {
-            robot.leftClaw.setPosition(0.0);
+            rbot.leftClaw.setPosition(0.0);
         }
          */
 
