@@ -18,7 +18,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 @Autonomous(name="BillsAuto", group="Team-A")
@@ -35,7 +34,7 @@ public class BillsAuto extends LinearOpMode {
     static final double DRIVE_SPEED = 0.3;
     static final double TURN_SPEED = 0.2;
     static final double     ROBOT_SPEED             = 2.25;
-    ColorSensor colorSensor;
+    ColorSensor sensorColor;
     ColorSensor jewelSensor;
     public static final double MID_SERVO = 0.5 ;
 
@@ -64,7 +63,7 @@ public class BillsAuto extends LinearOpMode {
          * The init() method of the hardware class does all the work here
          */
         robot.init(hardwareMap);
-
+        sensorColor = hardwareMap.colorSensor.get("cr");
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");    //
         telemetry.update();
@@ -81,7 +80,7 @@ public class BillsAuto extends LinearOpMode {
                 robot.rightDrive.getCurrentPosition());
         telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)
+        // Wait for the game to start (driver presses PLAY)d
         waitForStart();
 
         // Step through each leg of the path,
@@ -106,10 +105,7 @@ public class BillsAuto extends LinearOpMode {
         telemetry.update();
 
         */
-        encoderDrive(DRIVE_SPEED, 2, 2, 2.0);
-        encoderDrive(DRIVE_SPEED, -3, -3, 2.0);
-        encoderDrive(TURN_SPEED, -5.85, 5.85, 3.0);
-        encoderDrive(DRIVE_SPEED, 2, 2, 3.0);
+
         /*
          * To start up Vuforia, tell it the view that we wish to use for camera monitor (on the RC phone);
          * If no camera monitor is desired, use the parameterless constructor instead (commented out below).
@@ -157,26 +153,33 @@ public class BillsAuto extends LinearOpMode {
         waitForStart();
 
         relicTrackables.activate();
+        if (getColor().equals("RED")) {
+            encoderDrive(DRIVE_SPEED, 5.85, -5.85, 2.0);
+        }
+        else if (getColor().equals("BLUE"))
+        {
+            encoderDrive(DRIVE_SPEED, -5.85, 5.85, 2.0);
+        }
 
+        /**
         while (opModeIsActive()) {
-
-            /**
+         /**
              * See if any of the instances of {@link relicTemplate} are currently visible.
              * {@link RelicRecoveryVuMark} is an enum which can have the following values:
              * UNKNOWN, LEFT, CENTER, and RIGHT. When a VuMark is visible, something other than
              * UNKNOWN will be returned by {@link RelicRecoveryVuMark#from(VuforiaTrackable)}.
-             */
+
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if ( vuMark != RelicRecoveryVuMark.UNKNOWN) {
 
                 /* Found an instance of the template. In the actual game, you will probably
                  * loop until this condition occurs, then move on to act accordingly depending
-                 * on which VuMark was visible. */
+                 * on which VuMark was visible.
                 telemetry.addData("VuMark", "%s Cryptobox Column", vuMark);
 
                 /* For fun, we also exhibit the navigational pose. In the Relic Recovery game,
                  * it is perhaps unlikely that you will actually need to act on this pose information, but
-                 * we illustrate it nevertheless, for completeness. */
+                 * we illustrate it nevertheless, for completeness.
                 OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
                 telemetry.addData("Pose", format(pose));
             }
@@ -184,21 +187,27 @@ public class BillsAuto extends LinearOpMode {
                 telemetry.addData("VuMark", "Pictograph Not Visible");
             }
             //science guy
-
+            //encoderDrive(DRIVE_SPEED, -2, - 2, 2.0);
             if (vuMark == RelicRecoveryVuMark.RIGHT) {
-                driveToLine();
+                //encoderDrive(DRIVE_SPEED, 2, 2, 2.0);
+                //driveToLine();
+                /**
+                encoderDrive(DRIVE_SPEED, -2, - 2, 2.0);
                 encoderDrive(TURN_SPEED, (5.85/3), (-5.85/3), 2.0 );
+
                 break;
             }
             else if (vuMark == RelicRecoveryVuMark.LEFT)
             {
-                driveToLine();
+                //driveToLine();
+                encoderDrive(DRIVE_SPEED, -2, - 2, 2.0);
                 encoderDrive(TURN_SPEED, (-5.85/3), (5.85/3), 2.0 );
                 break;
             }
             else if (vuMark == RelicRecoveryVuMark.CENTER)
             {
-                driveToLine();
+                //driveToLine();
+                encoderDrive(DRIVE_SPEED, -2, - 2, 2.0);
                 encoderDrive(TURN_SPEED, 2,  2, 5.0);
                 break;
             }
@@ -207,7 +216,8 @@ public class BillsAuto extends LinearOpMode {
 
         }
 
-
+        encoderDrive(DRIVE_SPEED, 2, 2, 3.0);
+        */
 
         /**
         relicTrackables.activate();
@@ -323,8 +333,8 @@ public class BillsAuto extends LinearOpMode {
         encoderDrive(TURN_SPEED, factor * turnDistance, -factor * turnDistance, turnDistance/ROBOT_SPEED + 0.5);
     }
 
-    /**
-    public String getColor(ColorSensor sensorColor)
+
+    public String getColor()
     {
         telemetry.addData("LED", "Off");
         telemetry.addData("Clear", sensorColor.alpha());
@@ -336,6 +346,7 @@ public class BillsAuto extends LinearOpMode {
         else if(sensorColor.red() < sensorColor.blue()) return "BLUE";
         return null;
     }
+    /**
     public void forwardUntilLine()
     {
         while (getColor(colorSensor) == null)
