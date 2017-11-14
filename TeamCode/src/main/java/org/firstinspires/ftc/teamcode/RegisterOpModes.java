@@ -71,8 +71,10 @@ public class RegisterOpModes
          */
         manager.register("BillsTeleOp",             BillsTeleOp.class);
         manager.register("BillsTeleOpv2",           BillsTeleOpv2.class);
+        manager.register("BillsTeleOpv3",           BillsTeleOpv3.class);
 
         manager.register("BillsAuto",               BillsAuto.class);
+        manager.register("BillsProtoAuto",          BillsProtoAuto.class);
 
       //B-Team OpModes
 
