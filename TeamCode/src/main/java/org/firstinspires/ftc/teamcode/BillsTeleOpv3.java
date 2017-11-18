@@ -227,7 +227,7 @@ public class BillsTeleOpv3 extends OpMode {
         } else if (gamepad1.right_bumper) {
             servoPosition += 0.1;
             if (servoPosition > 1) {
-                servoPosition = 0;
+                servoPosition = 1;
             }
         }
 

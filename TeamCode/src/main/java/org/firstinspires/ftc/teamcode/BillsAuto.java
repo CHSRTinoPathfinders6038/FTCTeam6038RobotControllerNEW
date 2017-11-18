@@ -20,7 +20,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-@Autonomous(name="BillsAuto", group="Team-A")
+@Autonomous(name="WillAuto", group="Team-A")
 public class BillsAuto extends LinearOpMode {
     VuforiaLocalizer vuforia;
     HardwarePushbot robot = new HardwarePushbot();   // Use a Pushbot's hardware
@@ -31,11 +31,16 @@ public class BillsAuto extends LinearOpMode {
     static final double WHEEL_DIAMETER_INCHES = 3.5;     // For figuring circumference
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
+
     static final double DRIVE_SPEED = 0.3;
     static final double TURN_SPEED = 0.2;
+
+
+
     static final double     ROBOT_SPEED             = 2.25;
     ColorSensor sensorColor;
     ColorSensor jewelSensor;
+
     public static final double MID_SERVO = 0.5 ;
 
     @Override

@@ -73,8 +73,12 @@ public class RegisterOpModes
         manager.register("BillsTeleOpv2",           BillsTeleOpv2.class);
         manager.register("BillsTeleOpv3",           BillsTeleOpv3.class);
 
-        manager.register("BillsAuto",               BillsAuto.class);
-        manager.register("BillsProtoAuto",          BillsProtoAuto.class);
+        manager.register("WillAuto",                BillsAuto.class);
+//        manager.register("BillsProtoAuto",          BillsProtoAuto.class);
+        manager.register("BillsAutoGyro",           BillsAutoGyro.class);
+
+//        manager.register("BillsAutoLin",            BillsAutoLin.class);
+        manager.register("Sensor: MR Color Test",   MRSensorColorI2c.class);
 
       //B-Team OpModes
 
