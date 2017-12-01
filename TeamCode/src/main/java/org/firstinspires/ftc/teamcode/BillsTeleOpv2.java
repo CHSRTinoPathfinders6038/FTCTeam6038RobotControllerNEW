@@ -192,10 +192,7 @@ public class BillsTeleOpv2 extends OpMode {
 
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
                 telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
-
-            if (maxSpeed > 1) {
-                maxSpeed = 1;
-            }
+                break;
         }
 
         if (gamepad1.dpad_down) {

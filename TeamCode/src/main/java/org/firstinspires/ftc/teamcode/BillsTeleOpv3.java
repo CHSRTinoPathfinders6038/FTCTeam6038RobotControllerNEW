@@ -62,6 +62,8 @@ public class BillsTeleOpv3 extends OpMode {
     private DcMotor leftMotor;
     private DcMotor rightMotor;
     private Servo jewelKnocker;
+    private Servo leftClasp;
+    private Servo rightClasp;
     private DriveMode driveMode;
     private double maxSpeed;
     double  servoPosition;
@@ -161,8 +163,8 @@ public class BillsTeleOpv3 extends OpMode {
                 rightMotor.setPower((scaledRight) * maxSpeed);
                 break;
             case TANK_MODE:
-                double ly = -gamepad1.left_stick_y;
-                double ry = -gamepad1.right_stick_y;
+                double ly = gamepad1.left_stick_y;
+                double ry = gamepad1.right_stick_y;
 
                 leftMotor.setPower(ly * maxSpeed);
                 rightMotor.setPower(ry * maxSpeed);
@@ -201,10 +203,7 @@ public class BillsTeleOpv3 extends OpMode {
 
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
                 telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
-
-                if (maxSpeed > 1) {
-                    maxSpeed = 1;
-                }
+                break;
         }
 
         if (gamepad1.dpad_down) {
@@ -229,6 +228,14 @@ public class BillsTeleOpv3 extends OpMode {
             if (servoPosition > 1) {
                 servoPosition = 1;
             }
+        }
+
+        if (gamepad2.left_bumper) {
+            leftClasp.setPosition(1);
+            rightClasp.setPosition(0);
+        } else if (gamepad2.right_bumper) {
+            leftClasp.setPosition(0);
+            rightClasp.setPosition(1);
         }
 
         jewelKnocker.setPosition(servoPosition);
