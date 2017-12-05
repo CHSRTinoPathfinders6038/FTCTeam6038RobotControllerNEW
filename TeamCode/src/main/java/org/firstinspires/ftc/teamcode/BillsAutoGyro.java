@@ -103,14 +103,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
             waitForStart();
 
             gyroDrive(DRIVE_SPEED, 48.0, 0.0);
-//            gyroTurn( TURN_SPEED, -45.0);
-//            gyroHold( TURN_SPEED, -45.0, 0.5);
-//            gyroDrive(DRIVE_SPEED, 12.0, -45.0);
-//            gyroTurn( TURN_SPEED,  45.0);
-//            gyroHold( TURN_SPEED,  45.0, 0.5);
-//            gyroTurn( TURN_SPEED,   0.0);
-//            gyroHold( TURN_SPEED,   0.0, 1.0);
-//            gyroDrive(DRIVE_SPEED,-48.0, 0.0);
+            gyroTurn( TURN_SPEED, -45.0);
+            gyroHold( TURN_SPEED, -45.0, 0.5);
+            gyroDrive(DRIVE_SPEED, 12.0, -45.0);
+            gyroTurn( TURN_SPEED,  45.0);
+            gyroHold( TURN_SPEED,  45.0, 0.5);
+            gyroTurn( TURN_SPEED,   0.0);
+            gyroHold( TURN_SPEED,   0.0, 1.0);
+            gyroDrive(DRIVE_SPEED,-48.0, 0.0);
 
             // Step through each leg of the path,
             // Note: Reverse movement is obtained by setting a negative distance (not speed)

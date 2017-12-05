@@ -64,8 +64,10 @@ public class BillsTeleOpv3 extends OpMode {
     private Servo jewelKnocker;
     private Servo leftClasp;
     private Servo rightClasp;
+    private DcMotor incliner;
     private DriveMode driveMode;
     private double maxSpeed;
+    private double inclinerMaxSpeed;
     double  servoPosition;
     static final double MAX_POS     =  1.0;
     static final double MIN_POS     =  0.0;
@@ -92,6 +94,9 @@ public class BillsTeleOpv3 extends OpMode {
 
         leftMotor  = hardwareMap.get(DcMotor.class, "leftMotor");
         rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
+        leftClasp = hardwareMap.get(Servo.class, "leftClasp");
+        rightClasp = hardwareMap.get(Servo.class, "rightClasp");
+        incliner = hardwareMap.get(DcMotor.class, "incliner");
 
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
         rightMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -99,6 +104,7 @@ public class BillsTeleOpv3 extends OpMode {
         jewelKnocker = hardwareMap.get(Servo.class, "jewel");
 
         maxSpeed = 1;
+        inclinerMaxSpeed = 1;
 
         telemetry.addData("Status", "Initialized");
 
@@ -218,6 +224,18 @@ public class BillsTeleOpv3 extends OpMode {
             }
         }
 
+        if (gamepad2.dpad_down) {
+            inclinerMaxSpeed -= 0.01;
+            if (inclinerMaxSpeed < 0) {
+                inclinerMaxSpeed = 0;
+            }
+        } else if (gamepad2.dpad_up) {
+            inclinerMaxSpeed += 0.01;
+            if (inclinerMaxSpeed > 1) {
+                inclinerMaxSpeed = 1;
+            }
+        }
+
         if (gamepad1.left_bumper) {
             servoPosition -= 0.1;
             if (servoPosition < 0) {
@@ -230,6 +248,7 @@ public class BillsTeleOpv3 extends OpMode {
             }
         }
 
+        //close
         if (gamepad2.left_bumper) {
             leftClasp.setPosition(1);
             rightClasp.setPosition(0);
@@ -239,9 +258,11 @@ public class BillsTeleOpv3 extends OpMode {
         }
 
         jewelKnocker.setPosition(servoPosition);
+        incliner.setPower(gamepad2.right_stick_y * inclinerMaxSpeed);
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Current Max Speed", maxSpeed * 100 + "%");
+        telemetry.addData("Current Incliner Max Speed", inclinerMaxSpeed * 100 + "%");
         telemetry.update();
 
     }
