@@ -183,12 +183,12 @@ public class BillsTeleOpv3 extends OpMode {
                 // May need negate the values, and respectively for the OPP_POV mode.
 
                 double drive = -gamepad1.left_stick_y;
-                double turn  =  gamepad1.right_stick_x;
+                double turn = gamepad1.right_stick_x;
 
-                leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-                rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+                leftPower = Range.clip(drive + turn, -1.0, 1.0);
+                rightPower = Range.clip(drive - turn, -1.0, 1.0);
 
-                leftMotor.setPower((leftPower) * maxSpeed );
+                leftMotor.setPower((leftPower) * maxSpeed);
                 rightMotor.setPower((rightPower) * maxSpeed);
 
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
@@ -198,10 +198,10 @@ public class BillsTeleOpv3 extends OpMode {
             case OPP_POV_MODE:
 
                 drive = -gamepad1.right_stick_y;
-                turn  =  gamepad1.left_stick_x;
+                turn = gamepad1.left_stick_x;
 
-                leftPower = Range.clip(drive + turn, -1.0, 1.0) ;
-                rightPower = Range.clip(drive - turn, -1.0, 1.0) ;
+                leftPower = Range.clip(drive + turn, -1.0, 1.0);
+                rightPower = Range.clip(drive - turn, -1.0, 1.0);
 
 
                 leftMotor.setPower((leftPower) * maxSpeed);
@@ -258,11 +258,16 @@ public class BillsTeleOpv3 extends OpMode {
         }
 
         jewelKnocker.setPosition(servoPosition);
+        //if (!(incliner.getCurrentPosition()>0||incliner.getCurrentPosition()<x) {
+
         incliner.setPower(gamepad2.right_stick_y * inclinerMaxSpeed);
+
+    //  }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Current Max Speed", maxSpeed * 100 + "%");
         telemetry.addData("Current Incliner Max Speed", inclinerMaxSpeed * 100 + "%");
+        telemetry.addData("Current Incliner Position", incliner.getCurrentPosition());
         telemetry.update();
 
     }

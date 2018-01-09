@@ -166,6 +166,10 @@ public class BillsAuto extends LinearOpMode {
             encoderDrive(DRIVE_SPEED, -5.85, 5.85, 2.0);
         }
 
+//        while (opModeIsActive())  {
+//            encoderDrive(DRIVE_SPEED, -2, - 2, 2.0);
+//        }
+
         /**
         while (opModeIsActive()) {
          /**
