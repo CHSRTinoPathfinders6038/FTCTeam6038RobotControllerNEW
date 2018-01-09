@@ -101,7 +101,7 @@ public class BillsTeleOpv3 extends OpMode {
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
         rightMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        jewelKnocker = hardwareMap.get(Servo.class, "jewel");
+        jewelKnocker = hardwareMap.get(Servo.class, "jewelKnocker");
 
         maxSpeed = 1;
         inclinerMaxSpeed = 1;
@@ -260,7 +260,16 @@ public class BillsTeleOpv3 extends OpMode {
         jewelKnocker.setPosition(servoPosition);
         //if (!(incliner.getCurrentPosition()>0||incliner.getCurrentPosition()<x) {
 
-        incliner.setPower(gamepad2.right_stick_y * inclinerMaxSpeed);
+        if (incliner.getCurrentPosition() >= 2790) {
+            incliner.setPower(0);
+        } else if (incliner.getCurrentPosition() <= 0) {
+            incliner.setPower(0);
+        } else {
+            incliner.setPower(gamepad2.right_stick_y * inclinerMaxSpeed);
+        }
+
+
+
 
     //  }
 
