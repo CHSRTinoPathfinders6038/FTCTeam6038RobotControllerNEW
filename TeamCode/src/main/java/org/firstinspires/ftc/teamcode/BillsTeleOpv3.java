@@ -260,9 +260,9 @@ public class BillsTeleOpv3 extends OpMode {
         jewelKnocker.setPosition(servoPosition);
         //if (!(incliner.getCurrentPosition()>0||incliner.getCurrentPosition()<x) {
 
-        if (incliner.getCurrentPosition() >= 2790) {
+        if (incliner.getCurrentPosition() >= 2790 && gamepad2.right_stick_y < 0) {
             incliner.setPower(0);
-        } else if (incliner.getCurrentPosition() <= 0) {
+        } else if (incliner.getCurrentPosition() <= 0 && gamepad1.right_stick_y > 0) {
             incliner.setPower(0);
         } else {
             incliner.setPower(gamepad2.right_stick_y * inclinerMaxSpeed);
